@@ -60,3 +60,12 @@ public class QuickFindUF{
 
   }
 }
+
+/*
+Problems with this model:
+Union runtime: O(N), initialise: O(N).
+Find/connected method: O(1)
+
+Union is an expensive operation: takes N^2 array access to process N union commands on N
+objects. Must iterate through the whole array to change ids. 
+ */
