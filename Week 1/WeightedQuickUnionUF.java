@@ -114,4 +114,24 @@ public class WeightedQuickUnionUF{
         qfw.printSizes();
     }
 
+    /*
+    Running time analysis:
+    Union: Constant time given roots, without roots its proportional to depth of first and second
+    Find(connected): Takes time proportional to depth of first and second
+    - But for find, with weighted quick union, depth of any node x is at most log2 (N) N - total nodes in tree
+    Why?:
+    - Imagine a node x in Tree 1(T1), put under T2
+    - In what situation will depth increase?: When size of T2 >= T1
+    - This means the size of T1 ATLEAST DOUBLES - because T2 must be bigger or equal to T1
+    - If you double 1 log2 N times you get N => Max depth can only be log 2(N)
+    - i.e Size of tree containing x can only double at most log2(N) times since no.of nodes in tree = N
+
+    Runtime comparison
+                            Initialise          Union           Connected
+    quick-find                   N                N                 N
+    quick-union                  N             usually < N          N
+    weighted quick-union         N              log2(N)           log2(N)
+
+
+     */
 }
