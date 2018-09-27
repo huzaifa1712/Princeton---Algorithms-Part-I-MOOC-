@@ -1,0 +1,50 @@
+Percolation
+- Used in Physical systems
+- N by N grid of 'sites'
+- Each site open with probability p or blocked with probability 1-p (black and white squares)
+- System "percolates" iff(if and only if) top and bottom are connected by open sites
+    - i.e there is some way to get from top to bottom
+- e.g used in electronics - sites on conductors
+- Water flow
+- Social network - people connected - is there a connection between two groups of people
+
+Percolates or not? - depends on probability p that sites are open
+- If high => high probability of percolation
+- If low => probably not
+- Medium - maybe?
+
+Phase transition - at a certain site vacancy probability p*, it will most certainly percolate. Below that, it
+almost certainly won't (for large N = number of open sites on one side).
+
+How to find p* => cannot be done yet with mathematical models, must run union-find simulations to find it
+
+Monte carlo simulation -
+    Initialise grid to be blocked.
+    Declare random sites open until percolation occurs.
+    Vacancy percentage(open sites/total) estimates p*
+
+How to check whether N by N system percolates?
+- Create object for each site, name them 0 to N^2-1
+- Sites in same component if connected by open sites
+- Percolates iff any site on bottom row is connected to site on top row
+    - But brute force (run through every top and every bottom and see if connected) is an N^2 algorithm
+=> Trick: Use virtual sites at top and bottom, check if those are connected to know if percolates.
+
+Model opening a new site: Connect newly opened site to all *adjacent* open sites. - up to 4 calls to union
+for N by N.
+
+Using this => Can calculate p*
+Percolation threshold for large N: 0.592746 => p > p * means it almost definitely percolates, smaller it won't
+Sharp threshold
+
+
+Steps to develop usable algorithm e.g
+- Model the problem - Dynamic connectivity with nodes
+- Find algorithm to solve it - e.g QuickFind
+- Fast enough? Fits in memory? - QF too slow
+- If not, figure out why - runs in N^2
+- Iterate until satisfied - come up with QU, then Weighted, then path comp
+
+Scientific method for algorithms - come up with mathematical model, try to solve with DS and A, iterate through
+experimentation
+

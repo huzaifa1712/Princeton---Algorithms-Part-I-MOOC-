@@ -1,0 +1,16 @@
+1. Social network connectivity. Given a social network containing nn members and a log file containing
+ m timestamps at which times pairs of members formed friendships,
+ design an algorithm to determine the earliest time at which all members are connected
+ (i.e., every member is a friend of a friend of a friend ... of a friend).
+ Assume that the log file is sorted by timestamp and that friendship is an equivalence relation.
+ The running time of your algorithm should be m \log nmlogn or better and use extra space proportional to nn.
+
+
+Every member is a node in a tree - forming a friendship equivalent to a union in
+   weighted quick union + path comp algorithm - n nodes
+   Run through the m timestamps - run m unions
+   At each run, just like percolation - check if virtual top and bottom nodes are connected(will run in lg 2 N). If yes, stop and choose this timestamp as the earliest.
+
+   - Can't use Monte Carlo style opening all adjacent open sites since each friendship is between a pair of nodes
+
+2.    

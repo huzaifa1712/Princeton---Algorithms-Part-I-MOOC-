@@ -1,0 +1,28 @@
+Analysis of Weighted quick union WITH path compression
+- Paper by Hopcroft, Tarjan
+    - Starting from empty data structure, any sequence of M union-find operations on N objects makes
+    - <= c(N+M lg* N) array access
+    lg*N is the iterative lg function(lg = log2)
+    The number of times you have to take log 2 of a number to get 1
+    lg* of 2^65536 = 5 so in practice this is a number less than 5
+
+    => Running time is LINEAR in the real world, can be improved with Ackermann function
+    - this is because in practice lg*N is basically a constant
+
+- But there is no simple algorithm that is THEORETICALLY linear - proved by Friedman and Sachs
+- But weighted quick union with path comp is close to linear in practice
+
+Runtimes of the different algorithms, for M union-find operations on N objects (union + find)
+
+quick-find          M N
+
+quick - union       M N
+
+weighted QU         N + M log N
+
+QU + path comp      N + M log N
+
+weighted QU + path comp N + M lg * N => where lg * N is basically a constant number(increases so slowly)
+
+10^9 unions and finds on 10^9 objects
+=> WQUPC improves from 30 years to 6 seconds
